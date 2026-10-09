@@ -21,17 +21,19 @@ DAILY = BLOG / "docs" / "daily"
 INDEX = DAILY / "index.md"
 SIDEBAR = BLOG / "docs" / ".vitepress" / "sidebar.gen.ts"
 
-TEMPLATE = """# {d} · {placeholder}
+TEMPLATE = """# {d}
 
-## 今日所学
+## TIL
+
+### （知识点标题）
+
+（问题背景 → 学到的内容 → 代码示例）
+
+## 卡点
 
 -
 
-## 卡点与解决
-
--
-
-## 明日计划
+## 参考
 
 -
 """

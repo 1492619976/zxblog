@@ -5,7 +5,7 @@ export default {
     { text: '每日笔记', collapsed: false, items: [
       { text: '总览', link: '/daily/' },
       { text: '2026-10-10', link: "/daily/2026-10-10" },
-      { text: '2026-10-09 · 博客上线日', link: '/daily/2026-10-09' },
+      { text: '2026-10-09', link: '/daily/2026-10-09' },
     ] },
   ],
   java: [
