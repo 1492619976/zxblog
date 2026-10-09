@@ -60,7 +60,7 @@ def main():
     sb = SIDEBAR.read_text(encoding="utf-8")
     if f'"/daily/{d}"' not in sb:
         entry = f'      {{ text: \'{d}\', link: "/daily/{d}" }},'
-        m = re.search(r'((?:"daily"|daily): \[\n.*?items: \[\n)', sb)
+        m = re.search(r'((?:"daily"|daily): \[\n.*?link: [\'"]?/daily/[\'"]?.*?\n)', sb)
         if m:
             sb = sb[:m.end(1)] + entry + "\n" + sb[m.end(1):]
             SIDEBAR.write_text(sb, encoding="utf-8")

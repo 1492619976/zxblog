@@ -15,7 +15,7 @@
 3. 发布 = 构建 + 上传：`npm run docs:build && npx wrangler pages deploy docs/.vitepress/dist --project-name zxblog`
 4. 之后每次更新重跑第 3 步（可包成 npm script）
 
-## 方案 B：GitHub 双推（全自动，求职作品集建议）
+## 方案 B：GitHub 双推（全自动，推荐）
 
 1. 注册 GitHub → 建空仓 `zxblog`（Public，不勾初始化文件）
 2. `git remote add github https://github.com/<用户名>/zxblog.git && git push -u github main`
@@ -36,7 +36,7 @@
 ## 1. 在 GitHub 上建仓库
 
 - 仓库名已定 `zxblog`（网址会是 `https://<用户名>.github.io/zxblog/`）
-- 想让博客直接挂在 `https://<用户名>.github.io/` 根路径，仓库名就用 `<用户名>.github.io`（不推荐：根域名留给作品集主站）
+- 想让博客直接挂在 `https://<用户名>.github.io/` 根路径，仓库名就用 `<用户名>.github.io`（不推荐：根域名留给个人主站）
 - 其余选项默认（Public、不加 README）即可
 
 ## 2. 本地推送

@@ -29,7 +29,7 @@ export default defineConfig({
   // 否则线上样式与链接全部 404（本地 dev 路径也会变成 /zxblog/ 前缀）
   base: '/zxblog/',
   title: 'sunzz 的学习笔记',
-  description: '数据工程师转职 AI+大数据：2026-10 → 2027-03 半年学习全程记录',
+  description: '个人学习博客：Java、大数据、Python 与 AI、数据治理的学习笔记与每周复盘',
   head: [['meta', { name: 'generator', content: 'VitePress' }]],
 
   // 本地全文搜索：零依赖零费用，中文可用

@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: sunzz 的学习笔记
-  text: 半年转职计划 · 数据 → AI + 大数据
-  tagline: 记录 2026-10 → 2027-03 从数据中台工程师转职 AI+大数据方向的全过程——Python、大数据、RAG/Agent 项目、求职作品集，全部公开。
+  text: 边学边记 · 公开复盘
+  tagline: Java、大数据、Python 与 AI、数据治理——每天一篇学习笔记，每周一次复盘，全部公开。
   actions:
     - theme: brand
       text: 从最新周记读起 →
@@ -14,6 +14,10 @@ hero:
       link: /methodology/
 
 features:
+  - icon: 📝
+    title: 每日笔记
+    details: 每个学习日一篇：今日所学 / 卡点与解决 / 明日计划。
+    link: /daily/
   - icon: ☕
     title: Java
     details: 从基础语法到并发与 JVM，边学边记的逐层笔记。
@@ -36,19 +40,8 @@ features:
     link: /methodology/
   - icon: 📅
     title: 学习周记
-    details: 每周一篇：目标、进展、卡点、复盘，半年不断更。
+    details: 每周一篇：目标、进展、卡点、复盘。
     link: /weekly/
 ---
 
-## 半年转职路线图
-
-| 时间 | 主题 | 交付物 |
-|------|------|--------|
-| 2026-10 | Python 基础 + 学习体系搭建 | 周记开跑，笔记库上线 |
-| 2026-11 | AI 应用入门（RAG 最小闭环） | RAG 小项目 demo |
-| 2026-12 | 大数据核心组件 + AI 项目成型 | 项目 v1 |
-| 2027-01 | DataAgent 项目打磨 | 项目 v2 + 评测报告 |
-| 2027-02 | 作品集完善 + 面试准备 | 作品集定稿 |
-| 2027-03 | 出关求职 | ✈️ |
-
-> 路线会随实际情况调整，调整原因都会写进[周记](/weekly/)。
+> 内容按主题沉淀在各栏目，过程记录在[每日笔记](/daily/)，每周汇总在[学习周记](/weekly/)。
