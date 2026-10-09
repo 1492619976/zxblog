@@ -38,8 +38,8 @@ git push -u origin main
 - 仓库名 `blog` → `https://<用户名>.github.io/blog/`
 - 仓库名 `<用户名>.github.io` → `https://<用户名>.github.io/`
 
-> 如果博客挂在 `/blog/` 子路径，需要在本机 `docs/.vitepress/config.mts` 里加一行
-> `base: '/blog/'`（加在 `lang: 'zh-CN',` 下面即可），否则样式和链接会 404。
+> 本项目仓库名已定为 `blog`，`docs/.vitepress/config.mts` 已配置 `base: '/blog/'`（2026-10-09 提交 4de48fc）。
+> 若日后改用根路径仓库名，需删除该 `base` 行，本地 dev 地址也会从 `/blog/` 变回 `/`。
 
 ## 5. 以后的日常更新
 
