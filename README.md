@@ -1,6 +1,8 @@
-# my-learning-blog
+# zxblog
 
-个人学习博客（VitePress + GitHub Pages）：记录 2026-10 → 2027-03 转职 AI+大数据方向的学习全过程。
+个人学习博客（VitePress）：记录 2026-10 → 2027-03 转职 AI+大数据方向的学习全过程。
+
+代码托管：Gitee https://gitee.com/paul-sun/zxblog （站点发布渠道见 [DEPLOY.md](./DEPLOY.md)）
 
 ## 常用命令
 

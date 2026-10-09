@@ -1,6 +1,32 @@
-# 部署上线指引（GitHub Pages）
+# 部署上线指引
 
-全程免费，不需要服务器。首次约 10 分钟。
+## 当前托管现状（2026-10-09 定）
+
+- **代码主仓**：Gitee https://gitee.com/paul-sun/zxblog （remote `origin`）
+- **日常更新**：`git add . && git commit -m "..." && git push` 即可
+- **站点发布**：⚠️ Gitee Pages 已于 2024 年停止服务，推送到 Gitee **不会**自动发布站点；
+  `.github/workflows/deploy.yml` 仅在推送到 GitHub 时生效，对 Gitee 无效
+- 发布渠道二选一（详见下文）：Cloudflare Pages（CLI 手动发布）或 GitHub 双推（全自动发布）
+
+## 方案 A：Cloudflare Pages（不依赖 GitHub）
+
+1. 注册 https://dash.cloudflare.com （免费）
+2. `npx wrangler login` 浏览器授权一次
+3. 发布 = 构建 + 上传：`npm run docs:build && npx wrangler pages deploy docs/.vitepress/dist --project-name zxblog`
+4. 之后每次更新重跑第 3 步（可包成 npm script）
+
+## 方案 B：GitHub 双推（全自动，求职作品集建议）
+
+1. 注册 GitHub → 建空仓 `zxblog`（Public，不勾初始化文件）
+2. `git remote add github https://github.com/<用户名>/zxblog.git && git push -u github main`
+3. GitHub 仓库 Settings → Pages → Source 选 **GitHub Actions**
+4. `docs/.vitepress/config.mts` 的 `base: '/zxblog/'` 已与仓库名一致，无需改
+5. 之后日常：`git push` 推 Gitee + `git push github main` 推 GitHub，GitHub 侧自动发布
+   （可设 `git remote set-url --add --push origin <github-url>` 让一次 push 同时推两边）
+
+---
+
+以下为原 GitHub Pages 全自动流程（方案 B 的展开说明）：
 
 ## 0. 前置
 
