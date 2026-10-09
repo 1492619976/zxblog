@@ -9,8 +9,8 @@
 
 ## 1. 在 GitHub 上建仓库
 
-- 仓库名建议 `blog`（网址会是 `https://<用户名>.github.io/blog/`）
-- 想让博客直接挂在 `https://<用户名>.github.io/` 根路径，仓库名就用 `<用户名>.github.io`
+- 仓库名已定 `zxblog`（网址会是 `https://<用户名>.github.io/zxblog/`）
+- 想让博客直接挂在 `https://<用户名>.github.io/` 根路径，仓库名就用 `<用户名>.github.io`（不推荐：根域名留给作品集主站）
 - 其余选项默认（Public、不加 README）即可
 
 ## 2. 本地推送
@@ -35,11 +35,11 @@ git push -u origin main
 
 ## 4. 访问
 
-- 仓库名 `blog` → `https://<用户名>.github.io/blog/`
+- 仓库名 `zxblog` → `https://<用户名>.github.io/zxblog/`
 - 仓库名 `<用户名>.github.io` → `https://<用户名>.github.io/`
 
-> 本项目仓库名已定为 `blog`，`docs/.vitepress/config.mts` 已配置 `base: '/blog/'`（2026-10-09 提交 4de48fc）。
-> 若日后改用根路径仓库名，需删除该 `base` 行，本地 dev 地址也会从 `/blog/` 变回 `/`。
+> 本项目仓库名已定为 `zxblog`，`docs/.vitepress/config.mts` 已配置 `base: '/zxblog/'`。
+> 若日后改用根路径仓库名，需删除该 `base` 行，本地 dev 地址也会从 `/zxblog/` 变回 `/`。
 
 ## 5. 以后的日常更新
 

@@ -24,9 +24,9 @@ for (const s of SECTIONS) {
 
 export default defineConfig({
   lang: 'zh-CN',
-  // 部署在 https://<用户名>.github.io/blog/ 子路径，base 必须一致，
-  // 否则线上样式与链接全部 404（本地 dev 路径也会变成 /blog/ 前缀）
-  base: '/blog/',
+  // 部署在 https://<用户名>.github.io/zxblog/ 子路径，base 必须与仓库名一致，
+  // 否则线上样式与链接全部 404（本地 dev 路径也会变成 /zxblog/ 前缀）
+  base: '/zxblog/',
   title: 'sunzz 的学习笔记',
   description: '数据工程师转职 AI+大数据：2026-10 → 2027-03 半年学习全程记录',
   head: [['meta', { name: 'generator', content: 'VitePress' }]],
