@@ -8,6 +8,7 @@ import sidebarGen from './sidebar.gen'
 // ============================================================
 
 const SECTIONS = [
+  { key: 'daily', label: '每日笔记' },
   { key: 'java', label: 'Java' },
   { key: 'bigdata', label: '大数据' },
   { key: 'python-ai', label: 'Python 与 AI' },

@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """import_notes.py — 从 Obsidian 知识库（02-学习）批量导入笔记到本博客
 
+前置：设置环境变量 BLOG_SOURCE_ROOT=<你的Obsidian库>\02-学习（内容源，脚本只读该目录）
+
 用法：
   py -3 tools/import_notes.py scan
       扫描候选笔记，打印分组统计，生成 tools/candidates.txt（全部注释状态）
@@ -33,7 +35,9 @@ import sys
 from datetime import datetime
 from pathlib import Path, PurePosixPath
 
-SOURCE_ROOT = Path(r"D:\selfFiles_warehouse\02-学习").resolve()
+# 内容源通过环境变量 BLOG_SOURCE_ROOT 注入（不硬编码个人路径，脚本可公开分发）；
+# 脚本只读取该目录，清单中任何指向目录之外的路径一律拒绝导入。
+SOURCE_ROOT = Path(os.environ["BLOG_SOURCE_ROOT"]).resolve()
 BLOG_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUT = BLOG_ROOT / "docs"
 
@@ -351,15 +355,27 @@ def gen_sidebar(out_root: Path, plan):
     by_sec = {}
     for item in plan:
         by_sec.setdefault(item["sec"], []).append(item)
-    lines = ["// 本文件由 tools/import_notes.py 自动生成，请勿手改", "export default {"]
-    labels = {"java": "Java", "bigdata": "大数据", "python-ai": "Python 与 AI",
+    labels = {"daily": "每日笔记", "java": "Java", "bigdata": "大数据", "python-ai": "Python 与 AI",
               "governance": "数据治理", "methodology": "学习方法论", "weekly": "学习周记"}
+    # daily / weekly 是手写栏目：重写时从现有文件原样保留其条目（总览除外）
+    manual = {"daily": [], "weekly": []}
+    gen_path = out_root / ".vitepress" / "sidebar.gen.ts"
+    if gen_path.exists():
+        old = gen_path.read_text(encoding="utf-8")
+        for m in re.finditer(r"""\{ text: ([^\n]+?), link: ['"](/(?:daily|weekly)/[^'"]+)['"] \}""", old):
+            sec = "daily" if m.group(2).startswith("/daily") else "weekly"
+            if m.group(2) != f"/{sec}/":
+                manual[sec].append((m.group(1), m.group(2)))
+    lines = ["// 本文件由 tools/import_notes.py 自动生成，请勿手改", "export default {"]
     for sec, label in labels.items():
         items = [f'{{ text: {json.dumps("总览", ensure_ascii=False)}, link: "/{sec}/" }}']
-        for it in sorted(by_sec.get(sec, []), key=lambda x: x["stem"]):
-            first = [l for l in it["dst"].read_text(encoding="utf-8").splitlines()[:3] if l.startswith("title:")][0]
-            title = json.loads(first.split(":", 1)[1].strip())
-            items.append(f'{{ text: {json.dumps(title, ensure_ascii=False)}, link: "/{sec}/{it["stem"]}" }}')
+        if sec in manual:
+            items.extend(f'{{ text: {t}, link: "{l}" }}' for t, l in manual[sec])
+        else:
+            for it in sorted(by_sec.get(sec, []), key=lambda x: x["stem"]):
+                first = [l for l in it["dst"].read_text(encoding="utf-8").splitlines()[:3] if l.startswith("title:")][0]
+                title = json.loads(first.split(":", 1)[1].strip())
+                items.append(f'{{ text: {json.dumps(title, ensure_ascii=False)}, link: "/{sec}/{it["stem"]}" }}')
         lines.append(f'  {json.dumps(sec)}: [')
         lines.append(f'    {{ text: {json.dumps(label, ensure_ascii=False)}, collapsed: false, items: [')
         lines.extend(f'      {it},' for it in items)
