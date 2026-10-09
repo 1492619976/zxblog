@@ -42,7 +42,7 @@
 ## 2. 本地推送
 
 ```bash
-cd /d/blog
+cd /d/selfFiles_warehouse/blog
 git init
 git add .
 git commit -m "init: 学习博客上线"
