@@ -1,0 +1,9 @@
+node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+tools/__pycache__/
+tools/candidates.txt
+tools/import_report.txt
+*.log
+.DS_Store
+Thumbs.db

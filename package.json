@@ -1,0 +1,15 @@
+{
+  "name": "my-learning-blog",
+  "version": "0.1.0",
+  "private": true,
+  "description": "个人学习博客：记录 2026-10 至 2027-03 转职 AI+大数据方向的学习全过程",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  }
+}
