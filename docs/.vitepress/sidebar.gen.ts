@@ -3,13 +3,22 @@ export default {
   "daily": [
     { text: "每日笔记", collapsed: false, items: [
       { text: "总览", link: "/daily/" },
-      { text: "2026-10-19", link: "/daily/2026-10-19" },
-      { text: "2026-10-18", link: "/daily/2026-10-18" },
-      { text: "2026-10-15", link: "/daily/2026-10-15" },
-      { text: "2026-10-14", link: "/daily/2026-10-14" },
-      { text: "2026-10-11", link: "/daily/2026-10-11" },
-      { text: "2026-10-10", link: "/daily/2026-10-10" },
-      { text: "2026-10-09", link: "/daily/2026-10-09" },
+      { text: '2026-11-19', link: "/daily/2026-11-19" },
+      { text: '2026-11-13', link: "/daily/2026-11-13" },
+      { text: '2026-11-06', link: "/daily/2026-11-06" },
+      { text: '2026-11-05', link: "/daily/2026-11-05" },
+      { text: '2026-11-04', link: "/daily/2026-11-04" },
+      { text: '2026-10-29', link: "/daily/2026-10-29" },
+      { text: '2026-10-28', link: "/daily/2026-10-28" },
+      { text: '2026-10-21', link: "/daily/2026-10-21" },
+      { text: '2026-10-20', link: "/daily/2026-10-20" },
+      { text: '2026-10-19', link: "/daily/2026-10-19" },
+      { text: '2026-10-18', link: "/daily/2026-10-18" },
+      { text: '2026-10-15', link: "/daily/2026-10-15" },
+      { text: '2026-10-14', link: "/daily/2026-10-14" },
+      { text: '2026-10-11', link: "/daily/2026-10-11" },
+      { text: '2026-10-10', link: "/daily/2026-10-10" },
+      { text: '2026-10-09', link: "/daily/2026-10-09" },
     ] },
   ],
   "java": [
@@ -58,23 +67,12 @@ export default {
   "weekly": [
     { text: "学习周记", collapsed: false, items: [
       { text: "总览", link: "/weekly/" },
-      { text: "2026-W41（10-05 ~ 10-11）", link: "/weekly/2026-W41" },
-    ] },
-  ],
-  "kb": [
-    { text: "知识库", collapsed: false, items: [
-      { text: "总览", link: "/kb/" },
-    ] },
-  ],
-  "from-zero": [
-    { text: "从 0 到 1", collapsed: false, items: [
-      { text: "总览", link: "/from-zero/" },
-    ] },
-    { text: "基础", collapsed: false, items: [
-      { text: "总览", link: "/from-zero/basics/" },
-    ] },
-    { text: "项目", collapsed: false, items: [
-      { text: "总览", link: "/from-zero/projects/" },
+      { text: '2026-W46', link: "/weekly/2026-W46" },
+      { text: '2026-W45', link: "/weekly/2026-W45" },
+      { text: '2026-W44', link: "/weekly/2026-W44" },
+      { text: '2026-W43', link: "/weekly/2026-W43" },
+      { text: '2026-W42', link: "/weekly/2026-W42" },
+      { text: '2026-W41', link: "/weekly/2026-W41" },
     ] },
   ],
 }
