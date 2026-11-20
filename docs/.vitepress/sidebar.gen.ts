@@ -3,8 +3,13 @@ export default {
   "daily": [
     { text: "每日笔记", collapsed: false, items: [
       { text: "总览", link: "/daily/" },
-      { text: '2026-10-10', link: "/daily/2026-10-10" },
-      { text: '2026-10-09', link: "/daily/2026-10-09" },
+      { text: "2026-10-19", link: "/daily/2026-10-19" },
+      { text: "2026-10-18", link: "/daily/2026-10-18" },
+      { text: "2026-10-15", link: "/daily/2026-10-15" },
+      { text: "2026-10-14", link: "/daily/2026-10-14" },
+      { text: "2026-10-11", link: "/daily/2026-10-11" },
+      { text: "2026-10-10", link: "/daily/2026-10-10" },
+      { text: "2026-10-09", link: "/daily/2026-10-09" },
     ] },
   ],
   "java": [
@@ -53,6 +58,7 @@ export default {
   "weekly": [
     { text: "学习周记", collapsed: false, items: [
       { text: "总览", link: "/weekly/" },
+      { text: "2026-W41（10-05 ~ 10-11）", link: "/weekly/2026-W41" },
     ] },
   ],
   "kb": [
