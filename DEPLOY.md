@@ -1,9 +1,20 @@
 # 部署上线指引
 
-## 当前托管现状（2026-10-09 定）
+## ✅ 当前托管现状（2026-11-04 更新：GitHub Pages 已上线）
 
-- **代码主仓**：Gitee https://gitee.com/paul-sun/zxblog （remote `origin`）
-- **日常更新**：`git add . && git commit -m "..." && git push` 即可
+- **站点地址**：https://1492619976.github.io/zxblog/ （国内直连可访问）
+- **发布机制**：推送到 GitHub `main` → Actions 自动构建发布（`.github/workflows/deploy.yml`）
+- **代码主仓**：Gitee https://gitee.com/paul-sun/zxblog （remote `origin`，备份用）
+- **日常更新（三步，11-04 定）**：
+  ```bash
+  git pull origin main              # ① 动笔前先拉 Gitee（工作本可能推过）
+  git add . && git commit -m "更新：xxx"   # ② 写作提交
+  git push                          # ③ 一次推双仓：Gitee 备份 + GitHub 发布（约1分钟生效）
+  ```
+  > origin 已配双推送：fetch=Gitee，push=Gitee+GitHub。github.com 断流时单独推发布：
+  > `git -c http.proxy=http://127.0.0.1:6696 push github main`（此时 Gitee 那半会报错，忽略即可，之后补推）
+- ⚠️ 踩坑记录：仓库若未开启 Pages，构建会挂在 `configure-pages` 步骤；已于 11-04 通过 API 开启（`build_type: workflow`），今后不会再遇到
+- ⚠️ github.com 断流时：`git -c http.proxy=http://127.0.0.1:6696 push github main`
 - **站点发布**：⚠️ Gitee Pages 已于 2024 年停止服务，推送到 Gitee **不会**自动发布站点；
   `.github/workflows/deploy.yml` 仅在推送到 GitHub 时生效，对 Gitee 无效
 - 发布渠道二选一（详见下文）：Cloudflare Pages（CLI 手动发布）或 GitHub 双推（全自动发布）
