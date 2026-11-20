@@ -42,6 +42,14 @@ features:
     title: 学习周记
     details: 每周一篇：目标、进展、卡点、复盘。
     link: /weekly/
+  - icon: 🗂️
+    title: 知识库
+    details: 策展精选：从日常笔记里挑出经得起重读的，按主题配导读。
+    link: /kb/
+  - icon: 🚀
+    title: 从 0 到 1
+    details: 基础线 + 项目线：亲手造出来才算学会，附检验题与复盘。
+    link: /from-zero/
 ---
 
 > 内容按主题沉淀在各栏目，过程记录在[每日笔记](/daily/)，每周汇总在[学习周记](/weekly/)。

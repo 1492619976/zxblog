@@ -15,6 +15,8 @@ const SECTIONS = [
   { key: 'governance', label: '数据治理' },
   { key: 'methodology', label: '学习方法论' },
   { key: 'weekly', label: '学习周记' },
+  { key: 'kb', label: '知识库' },
+  { key: 'from-zero', label: '从 0 到 1' },
 ]
 
 // 把每个栏目的 sidebar 配置挂到对应路径前缀下

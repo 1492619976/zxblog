@@ -55,4 +55,20 @@ export default {
       { text: "总览", link: "/weekly/" },
     ] },
   ],
+  "kb": [
+    { text: "知识库", collapsed: false, items: [
+      { text: "总览", link: "/kb/" },
+    ] },
+  ],
+  "from-zero": [
+    { text: "从 0 到 1", collapsed: false, items: [
+      { text: "总览", link: "/from-zero/" },
+    ] },
+    { text: "基础", collapsed: false, items: [
+      { text: "总览", link: "/from-zero/basics/" },
+    ] },
+    { text: "项目", collapsed: false, items: [
+      { text: "总览", link: "/from-zero/projects/" },
+    ] },
+  ],
 }

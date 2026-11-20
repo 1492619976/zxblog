@@ -381,9 +381,72 @@ def gen_sidebar(out_root: Path, plan):
         lines.extend(f'      {it},' for it in items)
         lines.append('    ] },')
         lines.append('  ],')
+    for sec, (label, groups) in HAND_SECTIONS.items():
+        lines.append(f'  {json.dumps(sec)}: [')
+        lines.extend(_hand_section_groups(out_root, sec, label, groups))
+        lines.append('  ],')
     lines.append("}")
     (out_root / ".vitepress").mkdir(parents=True, exist_ok=True)
     (out_root / ".vitepress" / "sidebar.gen.ts").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+# 手写栏目：内容直接写在 docs/ 下，不经导入批次产生，但重写 sidebar.gen.ts 时
+# 必须保留——这里扫描 docs/<key>/ 实际文件生成条目（index.md 显示为"总览"，
+# 其余 .md 取 frontmatter title 显示，按文件名排序）
+# key → (label, [(子组标题, 子目录名), ...])；groups 为空 = 单组，条目取栏目根目录
+HAND_SECTIONS = {
+    "kb": ("知识库", []),
+    "from-zero": ("从 0 到 1", [("基础", "basics"), ("项目", "projects")]),
+}
+
+
+def _hand_title_of(p: Path) -> str:
+    for l in p.read_text(encoding="utf-8", errors="ignore").splitlines()[:3]:
+        if l.startswith("title:"):
+            try:
+                return json.loads(l.split(":", 1)[1].strip())
+            except Exception:
+                pass
+    return p.stem
+
+
+def _hand_section_groups(out_root: Path, sec: str, label: str, groups):
+    root = out_root / sec
+
+    def page_entries(d: Path):
+        out = []
+        if not d.is_dir():
+            return out
+        for p in sorted(d.glob("*.md"), key=lambda x: x.stem):
+            if p.name == "index.md":
+                continue
+            link = "/" + p.relative_to(out_root).with_suffix("").as_posix()
+            out.append(f'{{ text: {json.dumps(_hand_title_of(p), ensure_ascii=False)}, link: "{link}" }}')
+        return out
+
+    out = []
+    if not groups:
+        items = [f'{{ text: {json.dumps("总览", ensure_ascii=False)}, link: "/{sec}/" }}'] + page_entries(root)
+        out.append(f'    {{ text: {json.dumps(label, ensure_ascii=False)}, collapsed: false, items: [')
+        out.extend(f'      {it},' for it in items)
+        out.append('    ] },')
+        return out
+    out.append(f'    {{ text: {json.dumps(label, ensure_ascii=False)}, collapsed: false, items: [')
+    out.append(f'      {{ text: {json.dumps("总览", ensure_ascii=False)}, link: "/{sec}/" }},')
+    out.append('    ] },')
+    for gtitle, gdir in groups:
+        d = root / gdir if gdir else root
+        gitems = []
+        if (d / "index.md").exists():
+            link = "/" + d.relative_to(out_root).as_posix() + "/"
+            gitems.append(f'{{ text: {json.dumps("总览", ensure_ascii=False)}, link: "{link}" }}')
+        gitems.extend(page_entries(d))
+        if not gitems:
+            continue
+        out.append(f'    {{ text: {json.dumps(gtitle, ensure_ascii=False)}, collapsed: false, items: [')
+        out.extend(f'      {it},' for it in gitems)
+        out.append('    ] },')
+    return out
 
 
 def main():
