@@ -23,11 +23,16 @@ for (const s of SECTIONS) {
   sidebar[`/${s.key}/`] = (sidebarGen as any)[s.key] ?? []
 }
 
+// Cloudflare Pages 部署在根路径域名（xxx.pages.dev），GitHub Pages 部署在 /zxblog/ 子路径；
+// 发 Cloudflare 时在 Git Bash 里带变量构建：BLOG_BASE=cf npm run docs:build
+// （值用 cf 不用 /：Git Bash 的 MSYS 路径转换会把 / 改写成 Git 安装目录）
+const isCFDeploy = process.env.BLOG_BASE === 'cf'
+
 export default defineConfig({
   lang: 'zh-CN',
-  // 部署在 https://<用户名>.github.io/zxblog/ 子路径，base 必须与仓库名一致，
+  // GitHub Pages 部署在 https://<用户名>.github.io/zxblog/ 子路径，base 必须与仓库名一致，
   // 否则线上样式与链接全部 404（本地 dev 路径也会变成 /zxblog/ 前缀）
-  base: '/zxblog/',
+  base: isCFDeploy ? '/' : '/zxblog/',
   title: 'sunzz 的学习笔记',
   description: '个人学习博客：Java、大数据、Python 与 AI、数据治理的学习笔记与每周复盘',
   head: [['meta', { name: 'generator', content: 'VitePress' }]],
